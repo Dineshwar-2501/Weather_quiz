@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react'
 import QuestionBox from './components/QuestionBox'
 import ScoreBoard from './components/ScoreBoard'
-import cities from './assets/world_cities.json'
+import cities from './assets/Indian_cities.json'
 import './animate/animate.css' 
 import './animate/animate.min.css'
 // eslint-disable-next-line react-refresh/only-export-components
@@ -26,6 +26,7 @@ const Game = () => {
 
   async function getCityWeather() {
     const cityName = getRandomCity();
+    console.log(cityName);
     const res = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${cityName.name}&appid=${API_KEY}&units=metric`
     );
