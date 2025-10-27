@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react'
 import QuestionBox from './components/QuestionBox'
 import ScoreBoard from './components/ScoreBoard'
+import Waves from './components/Waves'
 import cities from './assets/Indian_cities.json'
 import './animate/animate.css' 
 import './animate/animate.min.css'
@@ -150,13 +151,16 @@ async function nextRound() {
 
 
   return (
-    <>
-      {(!c1 || !c2 || !city) ? (<p>Loding cites.</p>) : (
-        <UserBackpack.Provider value={{ city, c1, c2, score, setScore, question, nextRound }}>
-          <QuestionBox city={city} />
-          <ScoreBoard />
-        </UserBackpack.Provider>)}
-    </>
+    <div style={{position:"relative",overflow:"hidden"}}>
+      <Waves/>
+      <div style={{position:"relative" ,zIndex:1}}>
+        {(!c1 || !c2 || !city) ? (<p>Loding cites.</p>) : (
+          <UserBackpack.Provider value={{ city, c1, c2, score, setScore, question, nextRound }}>
+            <QuestionBox city={city} />
+            <ScoreBoard />
+          </UserBackpack.Provider>)}
+      </div>
+    </div>
   )
 }
 
